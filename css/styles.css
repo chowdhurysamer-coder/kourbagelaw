@@ -160,6 +160,103 @@ h3 { font-size: 20px; margin-bottom: 8px; }
   box-shadow: 6px 6px 0 var(--gold);
 }
 
+/* Editorial details */
+.dropcap::first-letter {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 52px;
+  line-height: .82;
+  float: left;
+  padding: 6px 10px 0 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.pull-quote {
+  margin: 18px 0 0;
+  padding: 14px 18px 14px 22px;
+  border-left: 3px solid var(--gold);
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--navy);
+  background: var(--gray-bg);
+}
+
+/* Closing process timeline */
+.timeline {
+  list-style: none;
+  counter-reset: step;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.timeline li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 34px 78px;
+}
+.timeline li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 0;
+  width: 52px; height: 52px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 22px; font-weight: 700; color: var(--navy);
+  background: #fff;
+}
+.timeline li::after {
+  content: "";
+  position: absolute; left: 26px; top: 56px; bottom: 4px;
+  width: 2px; background: var(--border);
+}
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li:last-child::after { display: none; }
+.timeline p { color: var(--muted); font-size: 15.5px; }
+
+/* Areas we serve */
+.towns {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 24px;
+  max-width: 860px;
+  margin: 0 auto 18px;
+}
+.towns li { padding-left: 24px; position: relative; font-size: 15.5px; }
+.towns li::before {
+  content: "\25B8";
+  position: absolute; left: 4px; color: var(--gold);
+}
+.towns-note { text-align: center; color: var(--muted); font-style: italic; }
+
+/* FAQ */
+.wrap-narrow { max-width: 820px; }
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 18px 52px 18px 22px;
+  font-weight: 700;
+  color: var(--navy);
+  position: relative;
+  font-size: 16.5px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  position: absolute; right: 20px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px; font-weight: 400; color: var(--gold);
+}
+.faq-item[open] summary::after { content: "\2013"; }
+.faq-item[open] summary { border-bottom: 1px solid var(--border); }
+.faq-item p { padding: 16px 22px 20px; color: var(--muted); font-size: 15.5px; }
+
 /* Checklist */
 .checks { list-style: none; margin: 0 0 26px; }
 .checks li { padding: 6px 0 6px 32px; position: relative; }
@@ -198,7 +295,8 @@ h3 { font-size: 20px; margin-bottom: 8px; }
   margin-bottom: 24px;
 }
 .review-box {
-  background: #fff; border: 1px solid var(--border);
+  background: var(--gray-bg); border: 1px solid var(--border);
+  border-bottom: 3px solid var(--gold);
   padding: 26px 44px; text-align: center; min-width: 220px;
 }
 .review-stars { display: block; color: var(--gold); font-size: 22px; letter-spacing: 3px; }
@@ -269,4 +367,6 @@ h3 { font-size: 20px; margin-bottom: 8px; }
   .strip-item + .strip-item { border-left: 0; border-top: 1px solid rgba(255,255,255,.35); }
   .pa-grid { grid-template-columns: 1fr; }
   .topbar-inner { justify-content: center; text-align: center; }
+  .towns { grid-template-columns: repeat(2, 1fr); }
+  .timeline li { padding-left: 68px; }
 }
