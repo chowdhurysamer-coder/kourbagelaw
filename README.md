@@ -1,14 +1,15 @@
 # Law Office of Allison M. Kourbage — Website
 
 A fast, dependency-free static website for the Law Office of Allison M. Kourbage,
-a boutique real estate law practice in Melville, NY.
+a real estate law practice in Melville, NY.
 
 ## Structure
 
 ```
-index.html      # Single-page site (hero, about, practice areas, process, reviews, contact)
-css/styles.css  # All styling (responsive, reduced-motion friendly)
-js/main.js      # Sticky header, mobile nav, scroll-reveal animations
+index.html      # Single-page site (hero, welcome, practice areas, reviews, contact)
+css/styles.css  # All styling (responsive)
+js/main.js      # Mobile menu and footer year
+img/            # Site photography (hero, closing, harbor, office)
 ```
 
 ## Running locally

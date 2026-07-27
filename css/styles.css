@@ -183,8 +183,7 @@ h3 { font-size: 20px; margin-bottom: 8px; }
 .cta {
   background:
     linear-gradient(rgba(15, 26, 41, .72), rgba(15, 26, 41, .72)),
-    url("../img/harbor.jpg") center / cover no-repeat;
-  background-attachment: fixed;
+    url("../img/harbor.jpg") center / cover no-repeat var(--navy);
   color: #fff; text-align: center;
 }
 .cta-inner { padding: 80px 20px; }
@@ -252,7 +251,6 @@ h3 { font-size: 20px; margin-bottom: 8px; }
   .hero-content { padding: 80px 20px 90px; }
   .contact-cols { grid-template-columns: 1fr; }
   .footer-cols { grid-template-columns: 1fr; gap: 28px; }
-  .cta { background-attachment: scroll; }
 }
 
 @media (max-width: 780px) {
