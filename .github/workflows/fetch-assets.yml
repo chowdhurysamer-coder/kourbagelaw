@@ -1,0 +1,35 @@
+name: Fetch site images
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download and optimize images
+        run: |
+          set -euo pipefail
+          mkdir -p img /tmp/src
+          curl -fsSL -o /tmp/src/hero.png    "https://d8j0ntlcm91z4.cloudfront.net/user_3GYBS62dxIIG18Q4M3dG53faoa7/hf_20260727_200306_bd8ff57a-1d4c-4562-91f3-c9ef4f018a85.png"
+          curl -fsSL -o /tmp/src/closing.png "https://d8j0ntlcm91z4.cloudfront.net/user_3GYBS62dxIIG18Q4M3dG53faoa7/hf_20260727_200307_44d02bee-ee11-4d9c-990b-92ba31ed462c.png"
+          curl -fsSL -o /tmp/src/harbor.png  "https://d8j0ntlcm91z4.cloudfront.net/user_3GYBS62dxIIG18Q4M3dG53faoa7/hf_20260727_200316_558c7c2a-7e3c-44a0-a709-0193385f621d.png"
+          curl -fsSL -o /tmp/src/office.png  "https://d8j0ntlcm91z4.cloudfront.net/user_3GYBS62dxIIG18Q4M3dG53faoa7/hf_20260727_200318_79462d51-0dfc-4f87-8d9a-ff34c5278438.png"
+          convert /tmp/src/hero.png    -resize 1920x -strip -interlace Plane -quality 82 img/hero-home.jpg
+          convert /tmp/src/closing.png -resize 1200x -strip -interlace Plane -quality 82 img/closing.jpg
+          convert /tmp/src/harbor.png  -resize 1920x -strip -interlace Plane -quality 80 img/harbor.jpg
+          convert /tmp/src/office.png  -resize 1200x -strip -interlace Plane -quality 82 img/office.jpg
+          ls -la img/
+
+      - name: Commit images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add img/
+          git diff --cached --quiet || git commit -m "Add optimized site photography"
+          git push
