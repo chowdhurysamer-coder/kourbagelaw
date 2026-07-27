@@ -25,10 +25,10 @@ jobs:
           curl -fsSL -o /tmp/src/closing.png "https://d8j0ntlcm91z4.cloudfront.net/user_3GYBS62dxIIG18Q4M3dG53faoa7/hf_20260727_200307_44d02bee-ee11-4d9c-990b-92ba31ed462c.png"
           curl -fsSL -o /tmp/src/harbor.png  "https://d8j0ntlcm91z4.cloudfront.net/user_3GYBS62dxIIG18Q4M3dG53faoa7/hf_20260727_200316_558c7c2a-7e3c-44a0-a709-0193385f621d.png"
           curl -fsSL -o /tmp/src/office.png  "https://d8j0ntlcm91z4.cloudfront.net/user_3GYBS62dxIIG18Q4M3dG53faoa7/hf_20260727_200318_79462d51-0dfc-4f87-8d9a-ff34c5278438.png"
-          convert /tmp/src/hero.png    -resize 1920x -strip -interlace Plane -quality 82 img/hero-home.jpg
-          convert /tmp/src/closing.png -resize 1200x -strip -interlace Plane -quality 82 img/closing.jpg
-          convert /tmp/src/harbor.png  -resize 1920x -strip -interlace Plane -quality 80 img/harbor.jpg
-          convert /tmp/src/office.png  -resize 1200x -strip -interlace Plane -quality 82 img/office.jpg
+          ffmpeg -y -i /tmp/src/hero.png    -vf "scale=1920:-2" -q:v 3 img/hero-home.jpg
+          ffmpeg -y -i /tmp/src/closing.png -vf "scale=1200:-2" -q:v 3 img/closing.jpg
+          ffmpeg -y -i /tmp/src/harbor.png  -vf "scale=1920:-2" -q:v 4 img/harbor.jpg
+          ffmpeg -y -i /tmp/src/office.png  -vf "scale=1200:-2" -q:v 3 img/office.jpg
           ls -la img/
 
       - name: Commit images
