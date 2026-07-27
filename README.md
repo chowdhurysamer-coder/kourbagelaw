@@ -22,11 +22,22 @@ python3 -m http.server 8000
 
 then visit http://localhost:8000.
 
+## Live site
+
+The site is deployed at **https://kourbage-law.higgsfield.app**
+
 ## Deploying
 
 Any static host works (GitHub Pages, Netlify, Vercel, S3). The site is a single
 HTML page with one CSS and one JS file; the only external requests are Google
 Fonts and the embedded Google Map.
+
+- `.github/workflows/deploy-pages.yml` publishes the site to the `gh-pages`
+  branch on every push. To serve it at
+  `https://chowdhurysamer-coder.github.io/kourbagelaw/`, enable Pages once in
+  **Settings → Pages → Source: Deploy from a branch → `gh-pages` / (root)**.
+- The current live deployment is hosted on Higgsfield at the URL above and can
+  be redeployed after content changes.
 
 ## Contact details used
 
