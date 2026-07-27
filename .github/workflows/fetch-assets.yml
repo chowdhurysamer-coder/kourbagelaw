@@ -2,6 +2,11 @@ name: Fetch site images
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - claude/allison-kourbage-law-website-25ch3c
+    paths:
+      - ".github/workflows/fetch-assets.yml"
 
 permissions:
   contents: write
